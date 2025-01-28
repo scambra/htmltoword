@@ -10,6 +10,8 @@ module Htmltoword
       @word_template = options[:word_template].presence
       @disposition = options.fetch(:disposition, 'attachment')
       @use_extras = options.fetch(:extras, false)
+      @header = options.fetch(:header, nil)
+      @footer = options.fetch(:footer, nil)
       @file_name = file_name(filename, options)
       @context = context
       define_template(filename, options)
@@ -17,7 +19,7 @@ module Htmltoword
     end
 
     def send_file
-      document = Htmltoword::Document.create(@content, @word_template, @use_extras)
+      document = Htmltoword::Document.create(@content, @word_template, @use_extras, header: @header, footer: @footer)
       @context.send_data(document, filename: @file_name, type: Mime[:docx], disposition: @disposition)
     end
 

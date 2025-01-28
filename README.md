@@ -170,6 +170,10 @@ Examples:
 <img src="http://placehold.it/250x100.png" data-height="150px" style="width:250px; height:100px">
 ```
 
+### Header and footer
+
+Header and footer are support replacing placeholders. The template must be edited to add the placeholders between {{ and }}, then header and footer keyword arguments can be used when creating a document, each keyword argument is a hash with placeholder names as keys, and content as value. So you will have to set `default_templates_path` to the directory with default.docx, or use other template in the `custom_templates_path`.
+
 ## Contributing / Extending
 
 Word docx files are essentially just a zipped collection of xml files and resources.
